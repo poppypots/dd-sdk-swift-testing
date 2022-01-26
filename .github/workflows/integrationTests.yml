@@ -45,18 +45,16 @@ jobs:
         include:
           - xcode: "11.7"
             iOS: "13.7"
+          - xcode: "12.4"
+            iOS: "14.4"
           - xcode: "12.5.1"
             iOS: "14.5"
-          - xcode: "12.4"
-            iOS: "13.7"
           - xcode: "13.0"
+            iOS: "15.0"
+          - xcode: "13.1"
             iOS: "15.0"
           - xcode: "13.2.1"
             iOS: "15.2"
-          - xcode: "13.2.1"
-            iOS: "14.5"
-          - xcode: "13.2.1"
-            iOS: "13.7"
     steps:
     - name: Checkout
       uses: actions/checkout@v2
