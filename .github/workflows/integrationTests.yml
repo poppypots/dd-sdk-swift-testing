@@ -35,6 +35,35 @@ jobs:
       run: sudo xcode-select --switch /Applications/Xcode_${{ matrix.xcode }}.app
     - name: Unit tests
       run: make tests
+      
+  test-iOS-Xcode-Combinations:
+    name: Run Tests iOS-Xcode Combinations
+    runs-on: macos-11
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - xcode: "11.7"
+            iOS: "13.7"
+          - xcode: "12.5.1"
+            iOS: "14.5"
+          - xcode: "12.4"
+            iOS: "13.7"
+          - xcode: "13.0"
+            iOS: "15.0"
+          - xcode: "13.2.1"
+            iOS: "15.2"
+          - xcode: "13.2.1"
+            iOS: "14.5"
+          - xcode: "13.2.1"
+            iOS: "13.7"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Select Xcode ${{ matrix.xcode }}
+      run: sudo xcode-select --switch /Applications/Xcode_${{ matrix.xcode }}.app
+    - name: Unit tests
+      run: 	xcodebuild -scheme DatadogSDKTesting_iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=${{ matrix.ios }}' test
 
   test-Integration-macOS:
     runs-on: macos-latest
