@@ -37,7 +37,7 @@ jobs:
       run: make tests
       
   test-iOS-Xcode-Combinations:
-    name: Run Tests iOS-Xcode Combinations
+    name: XCode,iOS
     runs-on: macos-11
     strategy:
       fail-fast: false
