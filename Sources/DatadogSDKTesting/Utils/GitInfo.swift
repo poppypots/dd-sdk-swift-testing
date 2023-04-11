@@ -392,9 +392,9 @@ struct CommitInfo {
                 committerEmail = committer[1].trimmingCharacters(in: .whitespaces)
                 committerDate = committer[2].trimmingCharacters(in: .whitespaces)
             } else if authorName != nil, committerName != nil {
-                if line.contains("--BEGIN PGP SIGNATURE--") {
+                if line.contains("--BEGIN PGP SIGNATURE--") || line.contains("--BEGIN SSH SIGNATURE--") {
                     foundPGP = true
-                } else if line.contains("--END PGP SIGNATURE--") {
+                } else if line.contains("--END PGP SIGNATURE--") || line.contains("--END SSH SIGNATURE--") {
                     foundPGP = false
                 } else if foundPGP == false {
                     if !message.isEmpty {
